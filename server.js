@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import { graphqlHTTP } from "express-graphql";
+
+import schema from "./app/schema/index.js";
 
 // initialise express app
 const app = express();
@@ -15,7 +18,15 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  graphqlHTTP({
+    graphiql: true,
+    schema,
+    pretty: true,
+  })
+);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

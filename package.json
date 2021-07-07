@@ -1,0 +1,27 @@
+{
+  "name": "sovtech-api",
+  "version": "1.0.0",
+  "description": "server for sovtech tech assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarloneA/sovtech-api.git"
+  },
+  "keywords": [
+    "sovtech",
+    "server"
+  ],
+  "author": "Marlone Akidiva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarloneA/sovtech-api/issues"
+  },
+  "homepage": "https://github.com/MarloneA/sovtech-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

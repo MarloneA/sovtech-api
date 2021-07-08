@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const url = "https://swapi.dev/api/";
+const url = process.env.BASE_URL || "https://swapi.dev/api/";
 
 export const getPeopleResolver = (root, args) =>
   fetch(`${url}/people/?page=${args.page ? args.page : "1"}`)

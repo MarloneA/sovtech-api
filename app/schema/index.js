@@ -1,38 +1,48 @@
-import {
-  GraphQLList,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLString,
-} from "graphql";
-
-import TypePerson from "../types/index.js";
+import { buildSchema } from "graphql";
 import { getPeopleResolver, getPersonResolver } from "../Resolvers/index.js";
 
-const QueryType = new GraphQLObjectType({
-  name: "Query",
-  description: "Root query",
-  fields: () => ({
-    getPeople: {
-      type: new GraphQLList(TypePerson),
-      description: "All star wars characters",
-      args: {
-        page: {
-          type: GraphQLString,
-        },
-      },
-      resolve: getPeopleResolver,
-    },
-    getPerson: {
-      type: TypePerson,
-      description: "One star wars character",
-      args: {
-        name: {
-          type: GraphQLString,
-        },
-      },
-      resolve: getPersonResolver,
-    },
-  }),
-});
+const schema = buildSchema(`
+  type Person {
+    name: String
+    height: String
+    mass: String
+    gender: String
+    homeworld: String
+  }
+  
+  type Node {
+    node: Person
+  }
 
-export default new GraphQLSchema({ query: QueryType });
+  type PageInfo {
+    nextPage: String
+    prevPage: String
+    perPageCount: Int
+  }
+
+  type Edge {
+    edges: [Node]
+    pageInfo: PageInfo
+  }
+  
+  type People {
+    page: Edge
+    totalCount: Int
+  }
+
+  type Query {
+    getPeople(page: String): People
+    getPerson(name: String): Person
+  }
+`);
+
+export const root = {
+  getPeople: ({ page }) => {
+    return getPeopleResolver({ page });
+  },
+  getPerson: ({ name }) => {
+    return getPersonResolver({ name });
+  },
+};
+
+export default schema;

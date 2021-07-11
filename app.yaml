@@ -1,5 +1,5 @@
 runtime: nodejs
-env: flex
+env: standard
 
 # This sample incurs costs to run on the App Engine flexible environment.
 # The settings below are to reduce costs during testing and are not appropriate
@@ -11,4 +11,6 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
-includes: env_variables.yaml
+env_variables :
+  BASE_URL: "https://swapi.dev/api/"
+  CORS_ORIGIN: "http://localhost:3000"

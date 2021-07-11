@@ -1,6 +1,9 @@
 import fetch from "node-fetch";
+import dotenv from "dotenv";
 
-const url = process.env.BASE_URL || "https://swapi.dev/api/";
+dotenv.config();
+
+const url = process.env.BASE_URL;
 
 export const getPeopleResolver = (args) =>
   fetch(`${url}/people/?page=${args.page ? args.page : "1"}`)

@@ -1,11 +1,15 @@
 import express from "express";
 import cors from "cors";
 import { graphqlHTTP } from "express-graphql";
+import { config } from "dotenv";
 
 import schema, { root } from "./app/schema/index.js";
 
 // initialise express app
 const app = express();
+
+// run dotenv config
+config();
 
 // handle cross origin requests
 const corsOptions = {

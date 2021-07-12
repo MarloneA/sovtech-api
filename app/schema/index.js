@@ -1,5 +1,5 @@
 import { buildSchema } from "graphql";
-import { getPeopleResolver, getPersonResolver } from "../Resolvers/index.js";
+import { getPeopleResolver, getPersonResolver } from "../resolvers/index.js";
 
 const schema = buildSchema(`
   type Person {

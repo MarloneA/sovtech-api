@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm config set engine-strict true && nodemon server.js"
+    "start": "npm config set engine-strict true && nodemon server.js",
+    "build": "npm config set engine-strict true && nodemon server.js",
   },
   "repository": {
     "type": "git",
